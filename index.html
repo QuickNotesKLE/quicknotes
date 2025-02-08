@@ -66,12 +66,15 @@
     function isIOS() {
       return /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     }
+
     function isAndroidMobile() {
-      window.location.replace("https://tinyurl.com/quicknotesapp1");
+      return /Android/.test(navigator.userAgent) && /Mobi/.test(navigator.userAgent);
     }
+
     function isDesktopModeOnAndroid() {
-      window.location.replace("https://tinyurl.com/quicknotesapp1");
+      return /Android/.test(navigator.userAgent) && !/Mobi/.test(navigator.userAgent);
     }
+
     function isDesktop() {
       return !/Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent);
     }
