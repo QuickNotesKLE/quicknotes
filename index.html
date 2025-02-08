@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="app">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>app</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f8f9fa;
+    }
+    #warning-screen {
+      display: none;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      max-width: 80%;
+      text-align: center;
+    }
+    #warning-screen h2 {
+      color: #d9534f;
+    }
+    #warning-screen p {
+      color: #333;
+    }
+    .continue-btn {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div id="warning-screen">
+    <h2>Quick Notes is not fully responsive yet But it will be soon</h2>
+    <p>You can only access notes on this device.</p>
+    <button class="continue-btn" onclick="continueToApp()">Continue to Quick Notes</button>
+  </div>
+  
+  <script>
+    function isIOS() {
+      return /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    }
+    function isAndroidMobile() {
+      window.location.replace("https://tinyurl.com/quicknotesapp1");
+    }
+    function isDesktopModeOnAndroid() {
+      window.location.replace("https://tinyurl.com/quicknotesapp1");
+    }
+    function isDesktop() {
+      return !/Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent);
+    }
+
+    if (isAndroidMobile() || isDesktopModeOnAndroid()) {
+      window.location.replace("https://tinyurl.com/quicknotesapp1");
+    } else if (isDesktop()) {
+      document.getElementById('warning-screen').style.display = 'block';
+    } else {
+      let script = document.createElement('script');
+      script.src = "flutter_bootstrap.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
+    function continueToApp() {
+      document.getElementById('warning-screen').style.display = 'none';
+      let script = document.createElement('script');
+      script.src = "flutter_bootstrap.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  </script>
+</body>
+</html>
