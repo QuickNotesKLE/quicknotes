@@ -1,7 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <base href="/">
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the --base-href argument provided to flutter build.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
@@ -17,86 +31,8 @@
 
   <title>app</title>
   <link rel="manifest" href="manifest.json">
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f8f9fa;
-    }
-    #warning-screen {
-      display: none;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      max-width: 80%;
-      text-align: center;
-    }
-    #warning-screen h2 {
-      color: #d9534f;
-    }
-    #warning-screen p {
-      color: #333;
-    }
-    .continue-btn {
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 15px;
-    }
-  </style>
 </head>
 <body>
-  <div id="warning-screen">
-    <h2>Quick Notes is not fully responsive yet But it will be soon</h2>
-    <p>You can only access notes on this device.</p>
-    <button class="continue-btn" onclick="continueToApp()">Continue to Quick Notes</button>
-  </div>
-  
-  <script>
-    function isIOS() {
-      return /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    }
-
-    function isAndroidMobile() {
-      return /Android/.test(navigator.userAgent) && /Mobi/.test(navigator.userAgent);
-    }
-
-    function isDesktopModeOnAndroid() {
-      return /Android/.test(navigator.userAgent) && !/Mobi/.test(navigator.userAgent);
-    }
-
-    function isDesktop() {
-      return !/Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent);
-    }
-
-    if (isAndroidMobile() || isDesktopModeOnAndroid()) {
-      window.location.replace("https://tinyurl.com/quicknotesapp1");
-    } else if (isDesktop()) {
-      document.getElementById('warning-screen').style.display = 'block';
-    } else {
-      let script = document.createElement('script');
-      script.src = "flutter_bootstrap.js";
-      script.async = true;
-      document.body.appendChild(script);
-    }
-
-    function continueToApp() {
-      document.getElementById('warning-screen').style.display = 'none';
-      let script = document.createElement('script');
-      script.src = "flutter_bootstrap.js";
-      script.async = true;
-      document.body.appendChild(script);
-    }
-  </script>
+  <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
